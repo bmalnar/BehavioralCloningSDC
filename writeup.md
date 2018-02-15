@@ -1,5 +1,5 @@
-##### **Behavioral Cloning Project**
-#### Writeup / README
+# **Behavioral Cloning Project**
+## Writeup / README
 
 This is a summary of the work done to train the neural network to drive a car on a track in the Udacity self-driving car simulator. The Github project is located [here] (https://github.com/bmalnar/BehavioralCloningSDC)
 
@@ -32,11 +32,27 @@ I did try to train the neural network **on this data as-is**, but it didn't work
 
 ### Collecting more data by running in the simulator
 
-I personally found the simulator very difficult to work with. I spent a lot of time trying to keep the car in the middle of the road, but without major success. I ended up driving very slowly, and steering in a way that would probably not be a good set of data for training. I read online that people experienced the same problem and ended up recommending a joystick, whereas I had only the keyboard. Before purchasing a joystick, I decided to give it a shot by using only augmentation approaches based on the Udacity provided dataset, and it worked, as described in the subsequent sections. 
+I personally found the simulator very difficult to work with in the "Training" mode, for collecting data. I spent a lot of time trying to keep the car in the middle of the road, but without major success. I ended up driving very slowly, and steering in a way that would probably not be a good set of data for training. I read online that people experienced the same problem and ended up recommending a joystick, whereas I had only the keyboard. Before purchasing a joystick, I decided to give it a shot by using only augmentation approaches based on the dataset provided by Udacity, and it worked, as described in the subsequent sections. 
 
 ### Data augmentation
 
+The goal of the data augmentation is to generate additional data for training our model, because what we currectly have might not be enough. In this case, the dataset provided by Udacity contains very few data points around larger steering angles, and many data points around the zero steering angle. We will augment the data to make the final dataset more balanced around all of the steering angle values, and to create more data in general. 
 
+We decided to perform the following data augmentation steps, in this particular order:
+
+1) Random shear
+2) Image cropping
+3) Flipping the image
+4) Changing the image brightness
+5) Resizing the image
+
+More information on each of these steps will be given in the subsequent sections. After we finish with the data augmentation step, we have a new dataset with the same directory structure as the original dataset provided by Udacity. In other words, all the newly generated images are stored in the directory called `IMG`, and the list of images and the driving parameters is stored in the csv file called `driving_log.csv`. By keeping this structure, we can simply generate different datasets with different augmentation schemes and use them during training to estimate the best augmentation strategy. 
+
+##### Random shear
+##### Image cropping
+##### Flipping the image
+##### Changing the image brightness
+##### Resizing the image
 
 #### Pre-processing the image data
 
