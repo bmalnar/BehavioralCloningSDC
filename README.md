@@ -9,7 +9,7 @@ The goal of this project is to train a neural network to drive a car on a track 
 - Test the network using the simulator in the autonomous driving mode, where the network steers the cars on its own based on the inputs from the frontal cameras. 
 - The goal is to train the network to be able to drive the car in a reasonably good way, in other words keep the car on the road, do not crash, and drive it in a manner that the passengers in the car would feel comfortable with. 
 
-<p style="text-align:center;"><img src="images/simulator.png" width="480" alt="Simulator" /></p>
+<p align="center"><img src="images/simulator.png" width="480" alt="Simulator" /></p>
 
 ### Files and directories content
 - `model.py` is a Python program that defines the neural network architecture, and trains it using Keras and the driving log data. 
