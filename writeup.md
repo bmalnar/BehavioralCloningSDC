@@ -48,33 +48,17 @@ We decided to perform the following data augmentation steps, in this particular 
 
 More information on each of these steps will be given in the subsequent sections. After we finish with the data augmentation step, we have a new dataset with the same directory structure as the original dataset provided by Udacity. In other words, all the newly generated images are stored in the directory called `IMG`, and the list of images and the driving parameters is stored in the csv file called `driving_log.csv`. By keeping this structure, we can simply generate different datasets with different augmentation schemes and use them during training to estimate the best augmentation strategy. 
 
+The image below shows the final dataset in terms of the distribution of steering angle values over the entire dataset. Compared to the original Udacity dataset, we can see that we have a better balance of the steering angle values and in general we have more data to use. 
+
+<img src="images/final_dataset.png" width="480" alt="Steering angle distribution in the Udacity dataset" />
+
 ##### Random shear
 ##### Image cropping
 ##### Flipping the image
 ##### Changing the image brightness
 ##### Resizing the image
 
-#### Pre-processing the image data
-
-All three datasets (training, validation and testing) were pre-processed in two steps:
-- Convert from RGB to grayscale using the method `rgb2gray`
-- Normalize the grayscale images to have zero mean and unit variance using the method `normalize`
-
-Conversion from RGB to grayscale is typically done to make the models simpler and smaller. However, sometimes having the color information could help the network to learn to classify better, if the color is indeed a decisive factor between the classes. In the case of traffic signs, it is probably not necessary to have the color information, because the traffic signs can be distinguished well even if the images are converted to grayscale for the purpose of classification. This is after all confirmed with the training and testing processes, which produce good results on grayscale images. 
-
-Normalization is typically done to ensure that the input data to the network has similar distribution, which helps the network to converge faster during training. If normalization isn't done, we could have a situation that very bright and very dark images affect the training process negatively because the brightness factor may be something that the network also tries to learn, and that is not what we want. 
-
-Below, we can see the result of changing the images from RGB to grayscale. We first show 42 RGB images from 42 different classes, and then we show the same images converted to RGB. We show only 42 images even though there are 43 classes, just to have the nice 7x6 grid for displaying the images (this is dufficient for illustration purposes). 
-
-- RGB images:
-
-<img src="writeup_images/rgb.png" width="480" alt="RGB images" />
-
-- Grayscale images:
-
-<img src="writeup_images/grayscale.png" width="480" alt="Grayscale images" />
-
-#### The model architecture
+### The model architecture
 
 The neural network chosen for this work resembles the LeNet network architecture, and has the following layers:
 
