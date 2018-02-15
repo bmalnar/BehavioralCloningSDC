@@ -55,11 +55,11 @@ The image below shows the final dataset in terms of the distribution of steering
 The code to generate this final dataset from the dataset provided by Udacity is simply:
 
 ```
-python generate_augmented_data.py
+python augment_data.py
 python filter_augmented_data.py
 ```
 
-The script `generate_augmented_data.py` takes the original dataset and simply creates many more images from it, by applying the aforementioned 5 transofrmations. After running it, the dataset will have many more examples, but the distribution of the number of examples per steering angle will still be very much shifted towards the zero angle. That is why we run `filter_augmented_data.py`, which filters out some of the augmented data points to create a more balanced dataset, as shown in the previous figure. This program goes through all the entries and keeps the entries with a certain probability. If the entry is in the area of the distribution where we have many data points already, the probability that the entry will be discarded is higher. 
+The program `augment_data.py` takes the original dataset and simply creates many more images from it, by applying the aforementioned 5 transofrmations. After running it, the dataset will have many more examples, but the distribution of the number of examples per steering angle will still be very much shifted towards the zero angle. That is why we run `filter_augmented_data.py`, which filters out some of the augmented data points to create a more balanced dataset, as shown in the previous figure. This program goes through all the entries and keeps the entries with a certain probability. If the entry is in the area of the distribution where we have many data points already, the probability that the entry will be discarded is higher. 
 
 ##### Random shear
 ##### Image cropping
