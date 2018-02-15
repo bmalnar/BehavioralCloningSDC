@@ -1,5 +1,5 @@
-**Behavioral Cloning Project**
-### Writeup / README
+##### **Behavioral Cloning Project**
+#### Writeup / README
 
 This is a summary of the work done to train the neural network to drive a car on a track in the Udacity self-driving car simulator. The Github project is located [here] (https://github.com/bmalnar/BehavioralCloningSDC)
 
@@ -28,7 +28,7 @@ It is interesting to observe the distribution of the steering angle values over 
 
 We can see that the majority of the data points can be found around the zero steering angle. This is due to the fact that the track that was used to generate the data is mostly flat, so steering is typically close to zero. 
 
-I did try to train the neural network **on this data as-is**, but it didn't work - the car in the autonomous mode would simply lose control in the first curve and go off the road. The neural network architecture was probably ok, because I managed to get a good model later with the same network using more data.    
+I did try to train the neural network **on this data as-is**, but it didn't work - the car in the autonomous mode would simply lose control in the first curve and go off the road. Apparently the car learned well to go straight, but not really how to make turns. The neural network architecture was probably ok, because I managed to get a good model later with the same network using more data.    
 
 ### Collecting more data by running in the simulator
 
