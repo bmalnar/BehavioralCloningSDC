@@ -53,7 +53,7 @@ def random_gamma(image):
 
    return cv2.LUT(image, table)
 
-def random_shear(image, steering_angle, shear_range=200):
+def random_affine(image, steering_angle, shear_range=200):
    ''' 
    Apply random shear on the input image
    '''
@@ -78,7 +78,7 @@ def process_image(image, steering_angle, top_crop_percent=0.35, bottom_crop_perc
 
    head = bernoulli.rvs(do_shear_prob)
    if head == 1:
-      image, steering_angle = random_shear(image, steering_angle, shear_range=shear_range)
+      image, steering_angle = random_affine(image, steering_angle, shear_range=shear_range)
 
    image = crop(image, top_crop_percent, bottom_crop_percent)
 
