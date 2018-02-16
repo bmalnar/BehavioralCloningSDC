@@ -135,3 +135,17 @@ The architecture was not changed during these experiments. The approach was to p
 The following picture shows the values of the training and validation loss over 8 epochs of training (indexed in the picture from 0 to 7). Based on the validation loss it appears that 8 epochs is probably enough in this case. 
 
 <img src="images/loss.png" width="480" alt="Training and validation loss" />
+
+### Testing the model in the simulator
+
+To test the model in the simulator, the files `model.h5` and `model.json` are needed. First, we start the simulator in the autonomous mode, and then run:
+
+`python drive.py model.json`
+
+We can observe that the simulator and the Python program establish a connection, and eventually the trained model starts to drive the car. The simulator sends the images from the car's frontal cameras to the Python program, where we grab the central image, crop it, and resize it, and then feed it to the trained model to predict the steering angle. This predicted value is sent back to the simulator, meaning that the trained model actually steers the car. The result of the model steering the car for one lap can be observed in the file `video.mp4`
+
+To create the video, we simply use the Python program `video.py` provided by Udacity. To run it, simply do:
+
+`python video.py video_images --fps 30`
+
+The directory `video_images` is where the program `drive.py` stores the images captured during the simulation of autonomous driving. 
