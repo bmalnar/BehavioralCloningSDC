@@ -14,7 +14,9 @@ The goal of this project is to train a neural network to drive a car on a track 
 ### Files and directories content
 - `model.py` is a Python program that defines the neural network architecture, and trains it using Keras and the driving log data. 
 - `model.h5` and `model.json` are the trained model's h5 and json files, respectively. They are created by `model.py` and used by `drive.py` to drive the car in the autonomous mode. 
-- `drive.py` is a Python program that uses the trained model to steer the car. This program receives images from the driving simulator, and sends to the simulator the control parameters for the vehicle (steering angle and throttle). 
+- `drive.py` is a Python program that uses the trained model to steer the car. This program receives images from the driving simulator, and sends to the simulator the control parameters for the vehicle (steering angle and throttle).
+- `video.py` is a Python program that takes the images captured during testing of the trained model in the simulator, and uses these images to create a video file
+- `video.mp4` is a video showing the trained model drive the car for one lap in the simulator
 - `writeup.md` provides more details on the project and analyzes the results. 
 
 ### The environment used for this work
