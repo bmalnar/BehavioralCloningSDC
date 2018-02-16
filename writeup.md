@@ -40,7 +40,7 @@ The goal of the data augmentation is to generate additional data for training ou
 
 We decided to perform the following data augmentation steps, in this particular order:
 
-1) Random shear
+1) Random affine transform
 2) Image cropping
 3) Flipping the image
 4) Changing the image brightness
@@ -63,30 +63,39 @@ The program `augment_data.py` takes the original dataset and simply creates many
 
 ### Image processing for data augmentation
 
-The following steps describe the image processing pipeline for data augmentation. We start with a picture from the original dataset and its accompanying steering angle. The original image is shown below
+The following steps describe the image processing pipeline for data augmentation. We start with a picture from the original dataset and its accompanying steering angle. The original image is shown below, and the steering angle associated with it is 0.02349 
 
 <img src="images/01_original_image.jpg" width="320" alt="Original image" />
 
-##### Random shear
+##### Random affine transform
+
+This step is performed first, and the idea is that we will get more data points away from the zero angle. The process is based on the OpenCV function `cv2.warpAffine`, and more information about it can be found [here](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_geometric_transformations/py_geometric_transformations.html). A random value is generated for each image to control how much is the image transformed, and in this way we improve the distribution in temrs of the steering angle. Together with the image transofrmation, we have to compute the new steering angle to reflect that transofrmation, and for this test picture it is 0.21447
 
 <img src="images/02_shear.jpg" width="320" alt="Shear" />
 
 ##### Image cropping
 
+Image cropping is done to eliminate from the image the areas which are not important for learning. For example, the hood of the car at the bottom of the image or the trees at the top do not contribute to learning how to drive. Hence we eliminate 35% of the image from the top, and 10% from the bottom. The width of the image stays the same. 
+
 <img src="images/03_crop.jpg" width="320" alt="Crop" />
 
 ##### Flipping the image
 
-<img src="images/04_flip_image.jpg" width="320" alt="Flip" />
+Flipping the image is done to ensure that we have a more uniform distribution of the steering angle for both left and right turns. For example, if the input dataset contains mostly left turns, the model will not learn well to steer towards right when needed. By flipping the image, we achieve a more uniform distribution for both positive and negative steering angles. The images are flipped with the probability of 50%, meaning that only 50% of the images will be flipped. 
+
+<img src="images/04_flip.jpg" width="320" alt="Flip" />
 
 ##### Changing the image brightness
+
+The image brightness is changed randomly to ensure that we have a better distribution of brightness, compared to the input dataset. This helps the model to generalize better and achieve good performance at all levels of brightness. 
 
 <img src="images/05_gamma.jpg" width="320" alt="Gamma" />
 
 ##### Resizing the image
 
-<img src="images/06_resize.jpg" width="64" alt="Resize" />
+Finally, the image is resized to 64x64 pixels and stored in a new file, which can later be used for training. As already mentioned, this size of the image allows the model to still learn and perform well, while the size of the model and the speed of training are significantly reduced. 
 
+<img src="images/06_resize.jpg" width="64" alt="Resize" />
 
 ### The model architecture
 
