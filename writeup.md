@@ -148,4 +148,4 @@ To create the video, we simply use the Python program `video.py` provided by Uda
 
 `python video.py video_images --fps 30`
 
-The directory `video_images` is where the program `drive.py` stores the images captured during the simulation of autonomous driving. 
+The directory `video_images` is where the program `drive.py` stores the images captured during the simulation of autonomous driving. To watch the video, simply download the video file and open it in your favorite video player. 
