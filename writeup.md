@@ -61,11 +61,32 @@ python filter_augmented_data.py
 
 The program `augment_data.py` takes the original dataset and simply creates many more images from it, by applying the aforementioned 5 transofrmations. After running it, the dataset will have many more examples, but the distribution of the number of examples per steering angle will still be very much shifted towards the zero angle. That is why we run `filter_augmented_data.py`, which filters out some of the augmented data points to create a more balanced dataset, as shown in the previous figure. This program goes through all the entries and keeps the entries with a certain probability. If the entry is in the area of the distribution where we have many data points already, the probability that the entry will be discarded is higher. 
 
+### Image processing for data augmentation
+
+The following steps describe the image processing pipeline for data augmentation. We start with a picture from the original dataset and its accompanying steering angle. The original image is shown below
+
+<img src="images/01_original_image.jpg" width="320" alt="Original image" />
+
 ##### Random shear
+
+<img src="images/02_shear.jpg" width="320" alt="Shear" />
+
 ##### Image cropping
+
+<img src="images/03_crop.jpg" width="320" alt="Crop" />
+
 ##### Flipping the image
+
+<img src="images/04_flip_image.jpg" width="320" alt="Flip" />
+
 ##### Changing the image brightness
+
+<img src="images/05_gamma.jpg" width="320" alt="Gamma" />
+
 ##### Resizing the image
+
+<img src="images/06_resize.jpg" width="64" alt="Resize" />
+
 
 ### The model architecture
 
